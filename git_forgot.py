@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-# git_forgot.py - find secrets that are still recoverable in a git repo
-#
-# Idea: git almost never deletes objects. amend / rebase / branch -D / stash drop
-# only move refs, the old commits and blobs stay in .git/objects (or in a pack).
-# So I read ALL objects, scan the blobs, and then figure out where each blob
-# came from (which commit, file, author, date) and how "hidden" it is.
-#
-# Output is JSON lines on stdout (one finding per line), summary on stderr.
-# Only stdlib + the git command.
-#
 # usage: python git_forgot.py <repo> [--show-secrets]
 
 import argparse
